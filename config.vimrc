@@ -29,6 +29,9 @@ map <leader>h :bpre<CR>
 map <leader>l :bnext<CR>
 map <leader>f :bfirst<CR>
 map <leader>a :blast<CR>
+
+" 返回上一个编辑的文件
+map <leader>n :e#<CR>
 "禁止生成临时文件
 set nobackup
 set noswapfile
@@ -242,4 +245,3 @@ let g:ctrlp_mruf_max = 500
 let g:ctrlp_follow_symlinks = 1
 "默认使用全路径搜索，置1后按文件名搜索，准确率会有所提高，可以用<C-d>进行切换
 let g:ctrlp_by_filename = 0
-
