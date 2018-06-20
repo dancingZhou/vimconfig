@@ -1,8 +1,11 @@
+" 项目
+"source ~/learn/layout/vim70.vim
+"viminfo ~/learn/layout/vim70.viminfo
+"mksession! ~/learn/layout/vim70.vim 
+"wviminfo! ~/learn/layout/vim70.viminfo
+" 结束
 set nocompatible              " 去除VI兼容模式，兼容模式会去掉vim的扩展
 filetype plugin indent on
-
-"自动加载配置文件
-"autocmd bufwritepost .vimrc source $MYVIMRC  
 " 失去焦点自动保存
 autocmd BufLeave,FocusLost * silent! wall
 set t_Co=256
@@ -55,6 +58,15 @@ set cursorcolumn
 " 高亮当前行
 set cursorline 
 
+" 加载配置文件
+map <Leader>ss :source ~/.vimrc<CR>
+" 编辑配置文件
+map <Leader>ee :e ~/.vimrc<CR>
+" 自动加载配置文件
+autocmd! bufwritepost .vimrc source ~/.vimrc
+"自动加载配置文件
+"autocmd bufwritepost .vimrc source $MYVIMRC  
+"
 " 下面是插件
 set rtp+=~/.vim/bundle/Vundle.vim " 设置包括vundle和初始化相关的runtime path
 call vundle#begin()               " 另一种选择, 指定一个vundle安装插件的路径 call vundle#begin('~/some/path/here')
@@ -85,6 +97,15 @@ Plugin 'taglist.vim'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'shawncplus/phpcomplete.vim'
 call vundle#end()
+"
+"let g:tlist_show_one_file = 1
+let Tlist_Exit_Onlywindow = 1
+let Tlist_Close_On_Select = 1
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Gainfocus_On_Toggleopen = 1
+let Tlist_Use_Right_Window = 1
+map <Leader>oo :Tlist <CR>
+"
 " let g:autoformat_verbosemode=1
 " 代码风格检查'prettier-standard',
 noremap <F3> :Autoformat<CR>
@@ -149,6 +170,7 @@ let g:airline_symbols.linenr = '⭡'
 "map <Leader>n <plug>NERDTreeTabsToggle<CR> "设置在新标签中共享nedertree
 " autocmd StdinReadPre * let s:std_in=1
 let g:nerdtree_tabs_open_on_gui_startup = 0
+let NERDTreeShowBookmarks=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
@@ -220,3 +242,4 @@ let g:ctrlp_mruf_max = 500
 let g:ctrlp_follow_symlinks = 1
 "默认使用全路径搜索，置1后按文件名搜索，准确率会有所提高，可以用<C-d>进行切换
 let g:ctrlp_by_filename = 0
+
