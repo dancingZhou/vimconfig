@@ -89,6 +89,7 @@ Plugin 'https://github.com/jiangmiao/auto-pairs.git'
 Plugin 'https://github.com/altercation/vim-colors-solarized.git'
 Plugin 'tpope/vim-commentary'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'chemzqm/wxapp.vim'
 
 Plugin 'morhetz/gruvbox'
 Plugin 'pangloss/vim-javascript'
@@ -102,8 +103,9 @@ call vundle#end()
 let Tlist_Exit_Onlywindow = 1
 let Tlist_Close_On_Select = 1
 let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Gainfocus_On_Toggleopen = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Use_Right_Window = 1
+"map <Leader>oo :TlistToggle <CR>
 map <Leader>oo :Tlist <CR>
 "
 " let g:autoformat_verbosemode=1
@@ -194,6 +196,7 @@ let g:nerdtree_tabs_open_on_console_startup=1
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 let g:nerdtree_tabs_smart_startup_focus = 2
 let NERDTreeMouseMode=2
+let g:NERDTreeWinSize=20
 
 " ymc自动补全的设置
 let g:ycm_min_num_of_chars_for_completion = 3 
