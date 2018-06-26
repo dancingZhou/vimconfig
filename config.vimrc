@@ -38,6 +38,8 @@ set noswapfile
 " 搜索文件忽略大小写
 set ignorecase
 
+map <leader>n :e#<CR>
+
 " 编码问题
 set encoding=utf8
 set fileencodings=utf8,gb18030,gbk
