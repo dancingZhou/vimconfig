@@ -29,9 +29,6 @@ map <leader>h :bpre<CR>
 map <leader>l :bnext<CR>
 map <leader>f :bfirst<CR>
 map <leader>a :blast<CR>
-
-" 返回上一个编辑的文件
-map <leader>n :e#<CR>
 "禁止生成临时文件
 set nobackup
 set noswapfile
@@ -93,6 +90,10 @@ Plugin 'https://github.com/altercation/vim-colors-solarized.git'
 Plugin 'tpope/vim-commentary'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'chemzqm/wxapp.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'tpope/vim-surround' " 包裹字符
+Plugin 'tpope/vim-repeat' " 让包裹字符的快捷键变为 .
+Plugin 'easymotion/vim-easymotion' " 快速移动
 
 Plugin 'morhetz/gruvbox'
 Plugin 'pangloss/vim-javascript'
@@ -101,7 +102,18 @@ Plugin 'taglist.vim'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'shawncplus/phpcomplete.vim'
 call vundle#end()
-"
+" 设置文件类型为typescript
+autocmd BufNewFile,BufRead *.d.ts,*.ts,*.tsx setlocal filetype=typescript
+"autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript
+"autocmd BufNewFile,BufRead *.d.ts setlocal filetype=typescript
+
+" easymotion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+" easymotion end
+
 "let g:tlist_show_one_file = 1
 let Tlist_Exit_Onlywindow = 1
 let Tlist_Close_On_Select = 1
@@ -109,7 +121,7 @@ let Tlist_File_Fold_Auto_Close = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Use_Right_Window = 1
 "map <Leader>oo :TlistToggle <CR>
-map <Leader>oo :Tlist <CR>
+map <Leader>t :Tlist <CR>
 "
 " let g:autoformat_verbosemode=1
 " 代码风格检查'prettier-standard',
@@ -122,7 +134,7 @@ let g:ale_fixers = {
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 " 关闭语法检查
-nmap <Leader>s :ALEToggle<CR>
+nmap <Leader>a :ALEToggle<CR>
 "普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
@@ -179,7 +191,7 @@ let NERDTreeShowBookmarks=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-map <leader>t :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 map <leader>v :NERDTreeFind<CR>
 let g:NERDTreeChDirMode = 2 
 " 是否显示隐藏文件
@@ -188,16 +200,6 @@ let g:NERDTreeChDirMode = 2
 let g:nerdtree_tabs_open_on_console_startup=1
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 "let g:nerdtree_tabs_smart_startup_focus = 2
-let NERDTreeMouseMode=2
-map <leader>t :NERDTreeToggle<CR>
-map <leader>v :NERDTreeFind<CR>
-let g:NERDTreeChDirMode = 2 
-" 是否显示隐藏文件
-"let NERDTreeShowHidden=1
-" 在终端启动vim时，共享NERDTree
-let g:nerdtree_tabs_open_on_console_startup=1
-let NERDTreeIgnore=['\.pyc','\~$','\.swp']
-let g:nerdtree_tabs_smart_startup_focus = 2
 let NERDTreeMouseMode=2
 let g:NERDTreeWinSize=20
 
@@ -248,3 +250,4 @@ let g:ctrlp_mruf_max = 500
 let g:ctrlp_follow_symlinks = 1
 "默认使用全路径搜索，置1后按文件名搜索，准确率会有所提高，可以用<C-d>进行切换
 let g:ctrlp_by_filename = 0
+
