@@ -101,7 +101,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'pangloss/vim-javascript'
 Plugin 'joshdick/onedark.vim'
 Plugin 'taglist.vim'
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 Plugin 'shawncplus/phpcomplete.vim'
 call vundle#end()
 " 设置文件类型为typescript
@@ -252,4 +252,3 @@ let g:ctrlp_mruf_max = 500
 let g:ctrlp_follow_symlinks = 1
 "默认使用全路径搜索，置1后按文件名搜索，准确率会有所提高，可以用<C-d>进行切换
 let g:ctrlp_by_filename = 0
-
